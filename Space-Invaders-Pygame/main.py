@@ -193,21 +193,29 @@ while running:
 
 
     for event in pygame.event.get():
+
         if event.type == pygame.QUIT:
             running = False
 
-        # if keystroke is pressed check whether its right or left
-            if blink.value == 1:
-                blink.value = 0
-                if bullet_state is "ready":
-                    bulletSound = mixer.Sound("laser.wav")
-                    bulletSound.play()
-                    # Get the current x cordinate of the spaceship
-                    bulletX = playerX
-                    fire_bullet(bulletX, bulletY)
+        # if event.type == pygame.KEYDOWN:
 
-    # 5 = 5 + -0.1 -> 5 = 5 - 0.1
-    # 5 = 5 + 0.1
+        #     if event.key == pygame.K_SPACE:
+        #         if bullet_state is "ready":
+        #             bulletSound = mixer.Sound("Space-Invaders-Pygame/laser.wav")
+        #             bulletSound.play()
+        #             # Get the current x cordinate of the spaceship
+        #             bulletX = playerX
+        #             fire_bullet(bulletX, bulletY)
+    
+    if blink.value == 1:
+        print('BLINK!')
+        blink.value = 0
+        if bullet_state is "ready":
+            bulletSound = mixer.Sound("Space-Invaders-Pygame/laser.wav")
+            bulletSound.play()
+            # Get the current x cordinate of the spaceship
+            bulletX = playerX
+            fire_bullet(bulletX, bulletY)
 
     # Enemy Movement
     for i in range(num_of_enemies):
@@ -230,7 +238,7 @@ while running:
         # Collision
         collision = isCollision(enemyX[i], enemyY[i], bulletX, bulletY)
         if collision:
-            explosionSound = mixer.Sound("explosion.wav")
+            explosionSound = mixer.Sound("Space-Invaders-Pygame/explosion.wav")
             explosionSound.play()
             bulletY = 480
             bullet_state = "ready"
