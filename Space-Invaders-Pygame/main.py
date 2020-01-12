@@ -26,7 +26,7 @@ pygame.display.set_icon(icon)
 playerImg = pygame.image.load('Space-Invaders-Pygame/player.png')
 playerX = 420
 playerY = 520
-playerX_change = 0
+playerX_change = 2
 
 # Enemy
 enemyImg = []
@@ -107,10 +107,15 @@ while running:
     screen.fill((0, 0, 0))
     # Background Image
     screen.blit(background, (0, 0))
-    playerX_change = 2
+    # Player movement
+
     playerX += playerX_change
-    if playerX >= 736:
-        playerX = 0
+    if playerX <= 0:
+        playerX_change = 2
+    elif playerX >= 736:
+        playerX_change = -2
+
+
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
