@@ -3,6 +3,7 @@ import random
 import multiprocessing as mp
 import pygame
 import pandas as pd
+from pyOpenBCI import OpenBCIGanglion
 
 import blink as blk
 import filterlib as flt
@@ -24,7 +25,7 @@ def blinks_detector(quit_program, blink_det, blinks_num, blink):
         else:
             smp = sample.channels_data[0]
             smp_flted = frt.filterIIR(smp, 0)
-        #print(smp_flted)
+        print(smp_flted)
 
         brt.blink_detect(smp_flted, -38000)
         if brt.new_blink:
@@ -36,10 +37,10 @@ def blinks_detector(quit_program, blink_det, blinks_num, blink):
                 blinks_num.value = brt.blinks_num
                 blink.value = 1
 
-        #if quit_program.is_set():
-        #    if not SYMULACJA_SYGNALU:
-        #        print('Disconnect signal sent...')
-        #        board.stop_stream()
+        if quit_program.is_set():
+            if not SYMULACJA_SYGNALU:
+                print('Disconnect signal sent...')
+                board.stop_stream()
 
     if __name__ == '__main__':
         clock = pygame.time.Clock()
@@ -56,9 +57,9 @@ def blinks_detector(quit_program, blink_det, blinks_num, blink):
                 clock.tick(200)
             print('KONIEC SYGNAŁU')
             quit_program.set()
-        # else:
-            # board = OpenBCIGanglion(mac=mac_adress)
-            # board.start_stream(detect_blinks)
+        else:
+             board = OpenBCIGanglion(mac=mac_adress)
+             board.start_stream(detect_blinks)
 
 blink_det = mp.Queue()
 blink = mp.Value('i', 0)
