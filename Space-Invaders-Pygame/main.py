@@ -197,6 +197,11 @@ while running:
 
         if event.type == pygame.QUIT:
             running = False
+                 
+        if event.type == pygame.KEYDOWN:
+			if event.key == pygame.K_ESCAPE:
+				quit_program.set()
+				event.type = pygame.QUIT
 
         # if event.type == pygame.KEYDOWN:
 
