@@ -25,7 +25,7 @@ def blinks_detector(quit_program, blink_det, blinks_num, blink):
         else:
             smp = sample.channels_data[0]
             smp_flted = frt.filterIIR(smp, 0)
-        print(smp_flted)
+        #print(smp_flted)
 
         brt.blink_detect(smp_flted, -38000)
         if brt.new_blink:
