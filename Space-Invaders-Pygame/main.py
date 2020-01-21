@@ -55,7 +55,7 @@ def blinks_detector(quit_program, blink_det, blinks_num, blink):
                     break
                 detect_blinks(sample)
                 clock.tick(200)
-            print('KONIEC SYGNAŁU')
+            print('KONIEC SYGNALU')
             quit_program.set()
         else:
              board = OpenBCIGanglion(mac=mac_adress)
@@ -73,7 +73,7 @@ proc_blink_det = mp.Process(
     args=(quit_program, blink_det, blinks_num, blink,)
     )
 
-# rozpoczęcie podprocesu
+# rozpoczee podprocesu
 proc_blink_det.start()
 print('subprocess started')
 
@@ -262,6 +262,6 @@ while running:
     show_score(textX, testY)
     pygame.display.update()
 
-# Zakończenie podprocesów
+# Zakonzenie podproceso
 proc_blink_det.join()
 
