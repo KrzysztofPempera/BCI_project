@@ -4,7 +4,7 @@
 BCI_project is a BCI controlled game.
 
 ## Why?
-We created this game as a project for our 'Human-Computer Interaction' classes. That was first time we used OpenBCI hardware.
+We created this game as a project for our 'Human-Computer Interaction' classes. That was the first time we used OpenBCI hardware.
 
 ## Build with
 * [Space-Invaders](https://github.com/attreyabhatt/Space-Invaders-Pygame) - game used as a template
